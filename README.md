@@ -1,7 +1,13 @@
-# docker commands
-sudo apt install docker.io
+# Install using the repository
+https://docs.docker.com/engine/install/
+in the link you will not having repository for amazon linux distribution
 # To find architecture
+lscpu | echo $(grep Architecture)
 dpkg --print-architecture 
-#echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# amazon docker commands 
+#!/bin/bash
+sudo yum install docker -y
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo docker version
+
