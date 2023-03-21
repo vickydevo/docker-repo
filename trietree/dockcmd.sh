@@ -18,3 +18,4 @@ docker run -d \
     sudo docker rmi image-name
     sudo docker exec -it container-name /bin/bash
     sudo docker logs cointainer-name
+    lshfdsfh
