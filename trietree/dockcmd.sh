@@ -8,10 +8,25 @@ docker run -d \
 	-e PGDATA=/var/lib/postgresql/data/pgdata \
 	-v /custom/mount:/var/lib/postgresql/data \
 	postgres
+
     sudo docker build -t type-image-name .
     sudo docker pull images
     sudo run -d -p5000:6673 --name postgrescont postgres:15.2
     sudo docker images
+
+    sudo docker history fdaf3dace6f1 ---> IMAGE_ID
+
+
+    out put
+IMAGE          CREATED              CREATED BY                                      SIZE      COMMENT
+fdaf3dace6f1   About a minute ago   /bin/sh -c #(nop)  CMD ["/bin/sh" "-c" "/app…   0B        
+84e2bcfd4e8b   2 minutes ago        /bin/sh -c #(nop) COPY dir:9a869ddddd18004de…   156B      
+1c5c8d0b973a   2 weeks ago          /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B        
+<missing>      2 weeks ago          /bin/sh -c #(nop) ADD file:20f2ff22b9a8ca9be…   72.8MB    
+<missing>      2 weeks ago          /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B        
+<missing>      2 weeks ago          /bin/sh -c #(nop)  LABEL org.opencontainers.…   0B        
+<missing>      2 weeks ago          /bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH     0B        
+<missing>      2 weeks ago          /bin/sh -c #(nop)  ARG RELEASE                  0B      
     sudo docker stop container-name
     sudo docker start container-name
     sudo docker rm container-name
@@ -50,4 +65,16 @@ sudo docker attach alpine2
   sudo docker run -dit --name alpine1 --network alpine1-net alpine /bin/bash
   sudo docker inspect bridge 
   sudo docker network connect alpine1-net alpine3 
+
+  # Docker storage
+  sudo docker run --rm -d -it --name bindcontainer --mount type=bind,source="$(pwd)"/remainder.sh,target="$(pwd)"/remainder.s,target=/app nginx
+      sudo docker run --rm -d -it --name bindcontainer --v "$(pwd)":/app nginx
+
+# docker volume
+sudo docker volume create vignanvol
+sudo docker volume ls
+sudo docker volume inspect vignanvol
+sudo docker run -it --name voltest --rm --mount source=vignanvol,target=/data nginx:latest /bin/sh
+# readonly to  file locking while multiple containers using same volume 
+sudo docker run -dit --name voltestreadonly --rm --mount source=vignanvol,target=/data,readonly nginx:latest /bin/sh
 
