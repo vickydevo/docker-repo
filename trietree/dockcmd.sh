@@ -78,3 +78,6 @@ sudo docker run -it --name voltest --rm --mount source=vignanvol,target=/data ng
 # readonly to  file locking while multiple containers using same volume 
 sudo docker run -dit --name voltestreadonly --rm --mount source=vignanvol,target=/data,readonly nginx:latest /bin/sh
 
+# NFS volume creation  time 56 mins
+install nfs package 
+https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-old.html
