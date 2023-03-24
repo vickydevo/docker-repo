@@ -18,4 +18,17 @@ Docker images act as a set of instructions to build a Docker container it can be
  Docker COPY which can only copy the files from host system to th container 
 
  # what is the diference between CMD and ENTRYPOINT?
- 
+ # how can you transfer a file from one docker container to another container?
+ # what is the diference between Dockerfile, Docker compose and Docker swarm?
+   Dockerfile      ----> Run a single container 
+            docker build -t name .
+   Docker compose  ----> Run multiple container using yaml file
+            docker compose up
+            docker compose down 
+   Docker swarm    ----> Container orchestration which allows communication between containers
+# After successfully executing the docker command "docker run ubuntu" the ubuntu container is getting killed automatically, why?
+
+
+# what is a multi stage build in Docker?
+# what are distro less images in Docker?
+
