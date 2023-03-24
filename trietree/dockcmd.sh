@@ -81,3 +81,10 @@ sudo docker run -dit --name voltestreadonly --rm --mount source=vignanvol,target
 # NFS volume creation  time 56 mins
 install nfs package 
 https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-old.html
+
+
+
+# Docker compose 
+sudo docker 
+sudo docker run -d -p8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password  --net mongo-net --name mongodb-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express
+sudo docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --net mongo-net --name mongodb mongo
