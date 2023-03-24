@@ -21,7 +21,7 @@ docker run -d \
 # DOCKER NETWORK
    1.BridgesNetwork 
     this the default network which allows your network in standlone containers
-
+     cidr 172.17.0.0/18
     In terms of Docker, a bridge network uses a software bridge which allows containers connected to the same bridge network to communicate, 
     while providing isolation from containers which are not connected to that bridge network.
    
@@ -34,4 +34,20 @@ docker run -d \
     (including swarm service containers) to communicate securely when encryption is enabled
 
     4.NoneNetwork: it completely disable the network
-    5.Macvlan : it assigns Mac addres to container. it is like physical device .it is used only for legacy application
+    5.Macvlan : it assigns Mac addres to container. it is like physical device .it is used only for legacy application 
+
+sudo docker network inspect bridge
+sudo docker attach alpine1; ip addr show 
+sudo docker attach alpine2 
+  / # ip addr show
+  ctl p and q  { without exiting containers}
+  
+  / create new network
+  sudo docker network create --driver bridge alpine1-net
+  sudo docker network inspect alpine1-net
+
+  # statrt container on specific network
+  sudo docker run -dit --name alpine1 --network alpine1-net alpine /bin/bash
+  sudo docker inspect bridge 
+  sudo docker network connect alpine1-net alpine3 
+
